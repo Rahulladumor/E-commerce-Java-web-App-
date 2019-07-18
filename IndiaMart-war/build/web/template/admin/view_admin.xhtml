@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+               <section id="main-content">
+          <section class="wrapper">
+               <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <center>
+                          <header class="panel-heading">
+                              <b>PRODUCT CATEGORY LIST</b>      
+                          </header>
+                          </center>
+                          <header class="panel-heading pull-right">
+                              <a href="add_category.jsf" class="btn btn-round btn-primary" >+ Add a new record</a>                      
+                          </header>
+                         
+                               <h:form>
+                            <p:dataTable value="#{adminManagedBean.getallAdminList()}" var="item" id="exmaple" styleClass="table table-striped table-bordered table-hover" rows="10" paginator="true" rowsPerPageTemplate="5,10,25,50,100">
+                                     
+                                     <p:column filterBy="#{item.firstName}"  sortBy="#{item.firstName}">
+                                            <f:facet name="header">
+                                                <h:outputText value="First Name"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.firstName}"/>
+                                     </p:column>
+                                     
+                                     <p:column filterBy="#{item.lastName}"  sortBy="#{item.lastName}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Last Name"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.lastName}"/>
+                                     </p:column>
+                
+                                      <p:column filterBy="#{item.contactNo}"  sortBy="#{item.contactNo}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Contact No"/>
+                                            </f:facet>
+                                          <h:outputText value="#{item.contactNo}"/>
+                                     </p:column>
+                                     
+                                    <p:column filterBy="#{item.emailId}"  sortBy="#{item.emailId}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Email Id"/>
+                                            </f:facet>
+                                        <h:outputText value="#{item.emailId}"/>
+                                     </p:column>
+                                     
+                                     <p:column filterBy="#{item.gender}"  sortBy="#{item.gender}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Gender"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.gender}"/>
+                                     </p:column>
+              
+                                    <p:column filterBy="#{item.userName}"  sortBy="#{item.userName}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Username"/>
+                                            </f:facet>
+                                        <h:outputText value="#{item.userName}"/>
+                                     </p:column>
+                                     
+                                     
+                                    <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Edit"/>
+                                            </f:facet>
+                                        <h:commandLink action="#{adminManagedBean.editAdmin(item.userName)}">
+                                           <h:graphicImage url="../../resources/seller/icon/edit.png" width="20" height="20" title="Edit"/>
+                                           
+                                       </h:commandLink>
+                                  </p:column>
+                            </p:dataTable>
+                </h:form> 
+                            
+            
+             <script>
+                $(function(){
+                $("#example").dataTable();
+                 });
+            </script>   
+                      </section>
+                  </div>
+              </div>
+              
+              
+              
+              </section>
+                    </section>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

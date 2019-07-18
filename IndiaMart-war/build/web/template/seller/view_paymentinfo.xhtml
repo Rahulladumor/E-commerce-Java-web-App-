@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"      
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./sellerTemplate.xhtml">
+
+            <ui:define name="content">
+                <section id="main-content">
+               <section class="wrapper">
+                
+                
+                <div class="row">
+                <div class="col-sm-12">
+              <section class="panel">
+              <header class="panel-heading">
+                  <h2>Payment Details..</h2>       
+              </header>
+              <div class="panel-body">
+              <div class="adv-table">
+                  
+                   <h:form>
+                             <p:dataTable value="#{sellerManagedBean.getSellerPayment(session.getAttribute('username'))}" var="item" id="exmaple" styleClass="table table-striped table-bordered table-hover" rows="10" paginator="true" rowsPerPageTemplate="5,10,25,50,100">
+                                     
+                                     <p:column filterBy="#{item.sellerPaymentId}" sortBy="#{item.sellerPaymentId}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Payment Id"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.sellerPaymentId}"/>
+                                     </p:column>
+                                     
+                                     <p:column filterBy="#{item.orderId.orderId}" sortBy="#{item.orderId.orderId}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Order Id"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.orderId.orderId}"/>
+                                     </p:column>
+                
+                                      <p:column filterBy="#{item.orderId.orderDate}" sortBy="#{item.orderId.orderDate}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Order Date"/>
+                                            </f:facet>
+                                          <h:outputText value="#{item.orderId.orderDate}"/>
+                                     </p:column>
+                                 
+                                   <p:column filterBy="#{item.orderId.productId.productName}" sortBy="#{item.orderId.productId.productName}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Product Name"/>
+                                            </f:facet>
+                                       <h:outputText value="#{item.orderId.productId.productName}"/>
+                                     </p:column>    
+                                 
+                                  <p:column filterBy="#{item.orderId.quantity}" sortBy="#{item.orderId.quantity}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Qunatity"/>
+                                            </f:facet>
+                                      <h:outputText value="#{item.orderId.quantity}"/>
+                                     </p:column>
+                                 
+                                  <p:column filterBy="#{item.orderId.price}" sortBy="#{item.orderId.price}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Price"/>
+                                            </f:facet>
+                                      <h:outputText value="#{item.orderId.price}"/>
+                                     </p:column>
+                                 
+                                    <p:column filterBy="#{item.orderId.totalPrice}" sortBy="#{item.orderId.totalPrice}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Total Price"/>
+                                            </f:facet>
+                                        <h:outputText value="#{item.orderId.totalPrice}"/>
+                                     </p:column>
+                                 
+                                    <p:column filterBy="#{item.amount}" sortBy="#{item.amount}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Amount Received"/>
+                                            </f:facet>
+                                        <h:outputText value="#{item.amount}"/>
+                                     </p:column>
+                                     
+                                     <p:column filterBy="#{item.date}" sortBy="#{item.date}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Received Date"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.date}"/>
+                                     </p:column>
+                           </p:dataTable>
+                </h:form> 
+                            
+            	
+             <script>
+                $(function(){
+                $("#example").dataTable();
+                 });
+            </script>   
+
+                 
+
+              </div>
+              </div>
+              </section>
+              </div>
+              </div>
+              
+
+              </section>
+                     </section>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

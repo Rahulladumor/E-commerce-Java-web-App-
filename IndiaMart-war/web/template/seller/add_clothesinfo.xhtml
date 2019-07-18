@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+     
+
+          
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" <body>
+
+        <ui:composition template="./sellerTemplate.xhtml">
+
+            <ui:define name="content">
+                <section id="main-content">
+          <section class="wrapper">
+                
+               <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                             Add Product...
+                          </header>
+                          <div class="panel-body">
+                              
+                             <h:form id="f1" prependId="false">                 
+                       <h:inputHidden value="#{sellerManagedBean.cloth_prodid}"/>
+                     <h:outputLabel for="size" value="Size"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="Size" value="#{sellerManagedBean.sizeid}" class="form-control" required="true">
+                              <f:selectItem itemLabel="Select Size" itemValue="" />
+                              <f:selectItems value="#{sellerManagedBean.getallSize()}" var="size" itemLabel="#{size.size} " itemValue="#{size.clothSizeId}"/>
+                           </h:selectOneMenu>
+                            <p:message for="Size"/>
+                        </div>
+                       
+                      <h:outputLabel for="color" value="Color"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="color" value="#{sellerManagedBean.cloth_colorid}" class="form-control" required="true">
+                              <f:selectItem itemLabel="Select Color" itemValue="" />
+                              <f:selectItems value="#{sellerManagedBean.getallColor()}" var="color" itemLabel="#{color.color} " itemValue="#{color.colorId}"/>
+                           </h:selectOneMenu>
+                             <p:message for="color"/>
+                        </div>
+                      
+                       <h:outputLabel for="fabric" value="Fabric"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="fabric" value="#{sellerManagedBean.fabricid}" class="form-control" required="true">
+                                <f:selectItem itemLabel="Select Fabric" itemValue="" />
+                                <f:selectItems value="#{sellerManagedBean.getallFabric()}" var="fabric" itemLabel="#{fabric.fabric} " itemValue="#{fabric.clothFabricId}"/>
+                           </h:selectOneMenu>
+                             <p:message for="fabric"/>
+                        </div>
+                       
+                        <h:outputLabel for="work" value="Work"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="work" value="#{sellerManagedBean.workid}" class="form-control" required="true">
+                                <f:selectItem itemLabel="Select Work" itemValue="" />
+                                <f:selectItems value="#{sellerManagedBean.getallWork()}" var="work" itemLabel="#{work.work} " itemValue="#{work.clothWorkId}"/>
+                           </h:selectOneMenu>
+                             <p:message for="work"/>
+                        </div>
+                        
+                         <h:outputLabel for="Stitchtype" value="Stitch Type"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="Stitchtype" value="#{sellerManagedBean.stitchtypeid}" class="form-control" required="true">
+                              <f:selectItem itemLabel="Select Stitch Type" itemValue="" />
+                              <f:selectItems value="#{sellerManagedBean.getallStitchtype()}" var="stitch" itemLabel="#{stitch.stitchType} " itemValue="#{stitch.clothStichId}"/>
+                           </h:selectOneMenu>
+                             <p:message for="Stitchtype"/>
+                        </div>
+                         
+                          <h:outputLabel for="style" value="Style"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="style" value="#{sellerManagedBean.styleid}" class="form-control" required="true">
+                              <f:selectItem itemLabel="Select Style" itemValue="" />
+                              <f:selectItems value="#{sellerManagedBean.getallStyle()}" var="style" itemLabel="#{style.style} " itemValue="#{style.clothStyleId}"/>
+                           </h:selectOneMenu>
+                             <p:message for="style"/>
+                        </div>
+                    
+                     
+                          <h:commandButton id="btnsub" value="Submit" action="#{sellerManagedBean.add_ProductClothinfo()}" class="btn btn-sm btn-success pull-right m-t-n-xs"></h:commandButton>
+                   </h:form>
+                          </div>
+                      </section>
+                      
+
+                  </div>
+              </div>
+              </section>
+                     </section>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

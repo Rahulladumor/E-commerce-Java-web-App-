@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+ <script type="text/javascript">
+        function readURL(input) {
+            if (input.files) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <body>
+
+        <ui:composition template="./sellerTemplate.xhtml">
+
+            <ui:define name="content">
+                <section id="main-content">
+          <section class="wrapper">
+                
+               <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                             Edit Product...
+                          </header>
+                          <div class="panel-body">
+                              <h:form id="f1" prependId="false" enctype="multipart/form-data">  
+                       <h:outputLabel  value="Product Name"/>
+                        <div class="form-group">
+                            <p:inputText id="ProductName" value="#{sellerManagedBean.product_name}" styleClass="form-control" required="true" validatorMessage="chushu">
+                               
+                              </p:inputText>
+                            <p:message for="ProductName"/>
+                        </div>
+                
+                    <h:outputLabel for="Category" value="Category"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="Category" value="#{sellerManagedBean.procat_id}" class="form-control" required="true">
+                                <f:selectItem itemLabel="Select Category" itemValue="" />
+                                <f:selectItems value="#{adminManagedBean.getallCategoryList()}" var="category" itemLabel="#{category.categoryName} " itemValue="#{category.categoryId}"/>
+                           </h:selectOneMenu>
+                             <p:message for="Category"/>
+                        </div>
+                      
+                     <h:outputLabel for="SubCategory" value="Sub Category"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="SubCategory" value="#{sellerManagedBean.probasic_subcatid}" class="form-control" required="true">
+                                <f:selectItems value="#{adminManagedBean.getallSubCategoryList()}" var="subcat" itemLabel="#{subcat.subCategoryName} " itemValue="#{subcat.subCategoryId}"/>
+                           </h:selectOneMenu>
+                             <p:message for="SubCategory"/>
+                        </div>
+                    
+                     <h:outputLabel for="MRP" value="MRP"/>
+                        <div class="form-group">
+                            <p:inputText id="MRP" value="#{sellerManagedBean.mrp}" styleClass="form-control">
+                             </p:inputText>
+                         </div>
+                     
+                      <h:outputLabel for="SellingPrice" value="Seling Price"/>
+                        <div class="form-group">
+                            <p:inputText id="SellingPrice" value="#{sellerManagedBean.sellingprice}" styleClass="form-control">
+                             </p:inputText>
+                          </div>
+                      
+                      <h:outputLabel for="Description" value="Product Description"/>
+                        <div class="form-group">
+                            <p:inputTextarea id="Description" value="#{sellerManagedBean.product_desc}" styleClass="form-control" required="true"></p:inputTextarea>
+                            <p:message for="Description"/>
+                        </div>
+                      
+                      <h:outputLabel for="Warrenty" value="Warrenty"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="Warrenty" value="#{sellerManagedBean.warrenty}" class="form-control" required="true">
+                                <f:selectItem itemLabel="3 Month" itemValue="3 Month"/>
+                                <f:selectItem itemLabel="6 Month" itemValue="6 Month"/>
+                                <f:selectItem itemLabel="1 Year" itemValue="1 Year"/>
+                                <f:selectItem itemLabel="2 Year" itemValue="2 Year"/>
+                            </h:selectOneMenu>
+                            <p:message for="Warrenty"/>
+                        </div>
+                      
+                     
+                      
+                      <h:outputLabel for="Stock" value="Stock"/>
+                        <div class="form-group">
+                            <p:inputText id="Stock" value="#{sellerManagedBean.stock}" styleClass="form-control" required="true">
+                                </p:inputText>
+                            <p:message for="Stock"/>
+                        </div>
+                      
+                       <h:outputLabel for="Image" value="Produt Image"/>
+                        <div class="form-group">
+                            <h:inputFile id="Image" value="#{sellerManagedBean.proImg}" styleClass="form-control" required="true" onchange="readURL(this)">
+                               
+                            </h:inputFile>
+                            <img id="blah" src="#"  height="150" width="250"/>
+                            <p:message for="Image"/>
+                        </div>
+                    
+                      <h:commandButton value="Next"  action="#{sellerManagedBean.add_ProductBasicInfo(session.getAttribute('username'))}" class="btn btn-sm btn-success pull-right m-t-n-xs"/>
+                      
+                  </h:form>
+                            <h:form>
+                       <center><p> <a href="view_productbasicinfo.jsf"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;BACK</a> </p></center>
+                       </h:form>
+                          </div>
+                      </section>
+                      
+
+                  </div>
+              </div>
+              </section>
+                     </section>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

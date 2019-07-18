@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./sellerTemplate.xhtml">
+
+            <ui:define name="content">
+               <section id="main-content">
+          <section class="wrapper">
+                
+               <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                             Add Product...
+                          </header>
+                          <div class="panel-body">
+                              
+                         <h:form id="f1" prependId="false">     
+                       
+                       <h:inputHidden value="#{sellerManagedBean.elec_prodid}"/>   
+                    <h:outputLabel for="ModelNo"  value="Model Number"/>
+                        <div class="form-group">
+                            <p:inputText id="ModelNo" value="#{sellerManagedBean.elec_modelno}" styleClass="form-control" required="true"></p:inputText>
+                            <p:message for="ModelNo"/>
+                        </div>
+                
+                    <h:outputLabel for="ModelName" value="Model Name"/>
+                        <div class="form-group">
+                            <p:inputText id="ModelName" value="#{sellerManagedBean.elec_modelname}" styleClass="form-control" required="true"></p:inputText>
+                            <p:message for="ModelName"/>
+                        </div>
+                      
+                     <h:outputLabel for="Brand" value="Brand"/>
+                        <div class="form-group">
+                            <p:inputText id="Brand" value="#{sellerManagedBean.elec_brand}" styleClass="form-control" required="true"></p:inputText>
+                            <p:message for="Brand"/>
+                        </div>
+                     
+                      <h:outputLabel for="Color" value="Color"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="Color" value="#{sellerManagedBean.elec_colorid}" class="form-control" required="true">
+                              <f:selectItem itemLabel="Select Color" itemValue="" />
+                              <f:selectItems value="#{sellerManagedBean.getallColor()}" var="color" itemLabel="#{color.color} " itemValue="#{color.colorId}"/>
+                           </h:selectOneMenu>
+                            <p:message for="Color"/>
+                        </div>
+                    
+                     <h:outputLabel for="touch_screen" value="Touch Screen"/>
+                        <div class="form-group">
+                            <h:selectOneRadio id="touch_screen" value="#{sellerManagedBean.touch_screen}" class="form-control" required="true">
+                                <f:selectItem itemLabel="Yes" itemValue="true"/>
+                                <f:selectItem itemLabel="No" itemValue="false"/>
+                            </h:selectOneRadio>
+                        </div>
+                     
+                      <h:outputLabel for="ram" value="RAM"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="ram" value="#{sellerManagedBean.ram}" class="form-control" required="true">
+                                <f:selectItem itemLabel="512 MB" itemValue="512 MB"/>
+                                <f:selectItem itemLabel="1 GB" itemValue="1 GB"/>
+                                <f:selectItem itemLabel="2 MB" itemValue="2 GB"/>
+                                <f:selectItem itemLabel="3 GB" itemValue="3 GB"/>
+                                <f:selectItem itemLabel="4 GB" itemValue="4 GB"/>
+                                <f:selectItem itemLabel="8 GB" itemValue="8 GB"/>
+                                <f:selectItem itemLabel="16 GB" itemValue="16 GB"/>
+                            </h:selectOneMenu>
+                        </div>
+                      
+                      <h:outputLabel for="mstorage" value="Memory Storage"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="mstorage" value="#{sellerManagedBean.mem_storage}" class="form-control" required="true">
+                                <f:selectItem itemLabel="16 GB" itemValue="16 GB"/>
+                                <f:selectItem itemLabel="32 GB" itemValue="32 GB"/>
+                                <f:selectItem itemLabel="64 GB" itemValue="64 GB"/>
+                                <f:selectItem itemLabel="128 GB" itemValue="128 GB"/>
+                                <f:selectItem itemLabel="256 GB" itemValue="256 GB"/>
+                                <f:selectItem itemLabel="512 GB" itemValue="512 GB"/>
+                                <f:selectItem itemLabel="1 TB" itemValue="1 TB"/>
+                                <f:selectItem itemLabel="2 TB" itemValue="2 TB"/>
+                            </h:selectOneMenu>
+                        </div>
+                      
+                      <h:outputLabel for="Dialtype" value="Display Type"/>
+                        <div class="form-group">
+                            <p:inputText id="Dialtype" value="#{sellerManagedBean.elec_disptype}" styleClass="form-control" required="true"></p:inputText>
+                            <p:message for="Dialtype"/>
+                        </div>
+                      
+                     
+                      
+                      <h:outputLabel for="Processor" value="Processor"/>
+                        <div class="form-group">
+                            <p:inputText id="Processor" value="#{sellerManagedBean.processor}" styleClass="form-control" required="true"></p:inputText>
+                            <p:message for="Processor"/>
+                        </div>
+                     
+                      <h:outputLabel for="Os" value="Operating System"/>
+                        <div class="form-group">
+                            <p:inputText id="Os" value="#{sellerManagedBean.os}" styleClass="form-control" required="true"></p:inputText>
+                            <p:message for="Os"/>
+                        </div>
+                      
+                     
+                      <h:commandButton id="btnsub" value="Submit" action="#{sellerManagedBean.add_ProductElecinfo()}" class="btn btn-sm btn-success pull-right m-t-n-xs"></h:commandButton>
+                   </h:form>
+                          </div>
+                      </section>
+                      
+
+                  </div>
+              </div>
+              </section>
+                     </section>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./sellerTemplate.xhtml">
+
+            <ui:define name="content">
+                <section id="main-content">
+          <section class="wrapper">
+                
+                
+                <div class="row">
+                <div class="col-sm-12">
+              <section class="panel">
+              <header class="panel-heading">
+                  <h2>Product Information List..</h2>       
+              </header>
+              <div class="panel-body">
+              <div class="adv-table">
+                  
+                  
+                  <h:form>
+                             <p:dataTable value="#{sellerManagedBean.getproductBasicInfo(session.getAttribute('username'))}" var="item" id="exmaple" styleClass="table table-striped table-bordered table-hover" rows="10" paginator="true" rowsPerPageTemplate="5,10,25,50,100">
+                                     
+                                
+                                <p:column filterBy="#{item.productBasicInfoId}" sortBy="#{item.productBasicInfoId}">
+                                     <f:facet name="header">Product Id</f:facet>
+                                     <h:outputText value="#{item.productBasicInfoId}"/>
+                                </p:column>
+                           
+                                <p:column filterBy="#{item.productName}" sortBy="#{item.productName}">
+                                            <f:facet name="header">
+                                                Product Name
+                                            </f:facet>
+                                         <h:outputText value="#{item.productName}"/>
+                                     </p:column>
+                                
+                                    <p:column filterBy="#{item.subCategoryId.categoryId.categoryName}" sortBy="#{item.subCategoryId.categoryId.categoryName}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Category"/>
+                                            </f:facet>
+                                        <h:outputText value="#{item.subCategoryId.categoryId.categoryName}"/>
+                                     </p:column>
+                                
+                                     <p:column filterBy="#{item.subCategoryId.subCategoryName}" sortBy="#{item.productName}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Subcategory"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.subCategoryId.subCategoryName}"/>
+                                     </p:column>
+                                
+                                     <p:column filterBy="#{item.mrp}" sortBy="#{item.productName}">
+                                            <f:facet name="header">
+                                                <h:outputText value="MRP"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.mrp}"/>
+                                     </p:column>
+                                
+                                     <p:column sortBy="#{item.productName}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Selling Price"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.sellingPrice}"/>
+                                     </p:column>
+                                     
+                                     <p:column filterBy="#{item.stock}" sortBy="#{item.stock}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Stock"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.stock}"/>
+                                     </p:column>
+                                 
+                                   <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Image"/>
+                                            </f:facet>
+                                       <h:graphicImage url="../resources/ProductImages/#{item.productImage}" width="80" height="140"/>
+                                     </p:column>
+                                
+                                
+                                 <p:column filterBy="#{item.productStatus}"  sortBy="#{item.productStatus}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Status"/>
+                                            </f:facet>
+                                       <h:outputText value="Active" class="label label-primary" rendered="#{item.productStatus=='1'}"/>  
+                                       <h:outputText value="Inactive" class="label label-danger" rendered="#{item.productStatus=='0'}"/>
+                                         
+                                     </p:column>
+                                
+                                  <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Edit"/>
+                                            </f:facet>
+                                       <h:commandLink action="#{sellerManagedBean.edit_ProductBasicInfo(item.productBasicInfoId)}">
+                                           <h:graphicImage url="../resources/img/img-icon/edit.png" width="20" height="20" title="Edit"/>
+                                           
+                                       </h:commandLink>
+                                  </p:column>
+                                 
+                                    <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Action"/>
+                                            </f:facet>
+                                        <h:commandButton value="Block" action="#{adminManagedBean.chg_Prostatus(item.productBasicInfoId,0)}" class="btn-danger" rendered="#{item.productStatus=='1'}">  
+                                         <f:param name="proid" value="#{item.productBasicInfoId}"/>
+                                      </h:commandButton>
+                                        
+                                        <h:commandButton value="Active" action="#{adminManagedBean.chg_Prostatus(item.productBasicInfoId,1)}" class=" btn-block" rendered="#{item.productStatus=='0'}">
+                                         <f:param name="proid" value="#{item.productBasicInfoId}"/>
+                                      </h:commandButton> 
+                                  </p:column>
+                                
+                                 
+                                   <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value=""/>
+                                            </f:facet>
+                                       
+                                        <h:commandButton value="View More" action="#{adminManagedBean.redirect_page()}" class="btn-info">
+                                         <f:param name="catname" value="#{item.subCategoryId.categoryId.categoryName}"/>
+                                         <f:param name="proid" value="#{item.productBasicInfoId}"/>
+                                     </h:commandButton>
+                                     </p:column>
+                                     
+                           </p:dataTable>
+                   </h:form>
+                            
+            	
+             <script>
+                $(function  $("#example").dataTable();
+                 });
+            </script>
+
+              </div>
+              </div>
+              </section>
+              </div>
+              </div>
+              
+
+              </section>
+                    </section>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

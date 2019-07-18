@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./sellerTemplate.xhtml">
+
+            <ui:define name="content">
+                <section id="main-content">
+          <section class="wrapper">
+                
+               <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                             PICKUP ADDRESS INFO
+                          </header>
+                          <div class="panel-body">
+                               <h:form id="f1" prependId="false">        
+                    <h:inputHidden value="#{sellerManagedBean.pkup_id}"/>
+                   <h:outputLabel for="address" value="Pickup Address"/>
+                        <div class="form-group">
+                            <h:inputTextarea id="address" class="form-control" value="#{sellerManagedBean.pkupadd}"></h:inputTextarea>
+                        </div>
+                      
+                    <h:outputLabel for="stateid" value="State"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="stateid" value="#{sellerManagedBean.pkuup_stateid}" class="form-control">
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItems value="#{adminManagedBean.getallState()}" var="state" itemLabel="#{state.stateName} " itemValue="#{state.stateId}"/>
+                            </h:selectOneMenu>
+                        </div>
+                      
+                     <h:outputLabel for="citycombo" value="City"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="citycombo" value="#{sellerManagedBean.pkup_cityid}" class="form-control">
+                               <f:selectItem itemLabel="Select" itemValue="" />
+                               <f:selectItems value="#{adminManagedBean.getallCity()}" var="city" itemLabel="#{city.cityName} " itemValue="#{city.cityId}"/>
+                             </h:selectOneMenu>
+                        </div>
+                      
+                       <h:outputLabel for="pincode" value="Pincode"/>
+                        <div class="form-group">
+                            <h:inputText id="pincode" value="#{sellerManagedBean.pkup_pin}" class="form-control"></h:inputText>
+                        </div>
+                     <h:inputHidden value="#{sellerManagedBean.add}"/>
+                     <h:inputHidden value="#{sellerManagedBean.uname}"/>
+                     <h:commandButton id="btnsub" value="Submit" action="#{sellerManagedBean.updateSellerPkupInfo()}" class="btn btn-sm btn-success pull-right m-t-n-xs"></h:commandButton>
+               </h:form>
+                          </div>
+                      </section>
+                      
+
+                  </div>
+              </div>
+              </section>
+                     </section>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

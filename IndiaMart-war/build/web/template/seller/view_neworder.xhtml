@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./sellerTemplate.xhtml">
+
+            <ui:define name="content">
+                <section id="main-content">
+          <section class="wrapper">
+                
+                
+                <div class="row">
+                <div class="col-sm-12">
+              <section class="panel">
+              <header class="panel-heading">
+                  <h2>New Order Data..</h2>       
+              </header>
+              <div class="panel-body">
+              <div class="adv-table">
+                  
+                 
+                  <h:form>
+                           <p:dataTable value="#{sellerManagedBean.getNewOrder(session.getAttribute('username'))}" var="item" id="exmaple" styleClass="table table-striped table-bordered table-hover" rows="10" paginator="true" rowsPerPageTemplate="5,10,25,50,100">
+                                     
+                                     <p:column filterBy="#{item.orderId}" sortBy="#{item.orderId}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Order Id"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.orderId}"/>
+                                     </p:column>
+                                     
+                                     <p:column filterBy="#{item.productId.productBasicInfoId}" sortBy="#{item.productId.productBasicInfoId}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Product Id"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.productId.productBasicInfoId}"/>
+                                     </p:column>
+                
+                                    <p:column filterBy="#{item.productId.productName}" sortBy="#{item.productId.productName}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Product Name"/>
+                                            </f:facet>
+                                          <h:outputText value="#{item.productId.productName}"/>
+                                     </p:column>
+                               
+                                     <p:column filterBy="#{item.quantity}" sortBy="#{item.quantity}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Quantity"/>
+                                            </f:facet>
+                                           <h:outputText value="#{item.quantity}"/>
+                                     </p:column>
+                               
+                                     <p:column filterBy="#{item.price}" sortBy="#{item.price}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Price"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.price}"/>
+                                     </p:column>
+                               
+                                     <p:column filterBy="#{item.totalPrice}" sortBy="#{item.totalPrice}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Total Price"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.totalPrice}"/>
+                                     </p:column>
+                               
+                                     <p:column filterBy="#{item.orderDate}" sortBy="#{item.orderDate}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Order Date"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.orderDate}"/>
+                                     </p:column>
+                               
+                                     <p:column filterBy="#{item.userName.userName}" sortBy="#{item.userName.userName}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Customer UserName"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.userName.userName}"/>
+                                     </p:column>
+                               
+                                     <p:column filterBy="#{item.billAddress}" sortBy="#{item.billAddress}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Billing Address"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.billAddress}"/>
+                                     </p:column>
+                               
+                                     <p:column filterBy="#{item.shippingAddress}" sortBy="#{item.shippingAddress}">
+                                            <f:facet name="header">
+                                                <h:outputText value="Shipping Address"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.shippingAddress}"/>
+                                     </p:column>
+                                    
+                                     <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Action"/>
+                                            </f:facet>
+                                         <h:commandButton value="Manifast Order" class="btn-success" action="#{sellerManagedBean.chg_OrderStatus(item.orderId)}" />
+                                     </p:column>
+                                
+                   </p:dataTable>
+                </h:form>   
+                            
+            	
+             <script>
+                $(function(){
+                $("#example").dataTable();
+                 });
+            </script>   
+
+              </div>
+              </div>
+              </section>
+              </div>
+              </div>
+              
+
+              </section>
+                    </section>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

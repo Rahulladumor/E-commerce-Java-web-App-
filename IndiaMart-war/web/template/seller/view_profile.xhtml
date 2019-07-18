@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./sellerTemplate.xhtml">
+
+            <ui:define name="content">
+                 <section id="main-content">
+          <section class="wrapper">
+                
+               <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                             EDIT MY PROFILE
+                          </header>
+                          <div class="panel-body">
+                             <h:form id="f1" prependId="false">        
+              
+                    <h:outputLabel  value="First Name"/>
+                        <div class="form-group">
+                            <h:inputText id="fname" value="#{adminManagedBean.userName}" class="form-control" validatorMessage="chushu">
+                                <f:validateRequired/>
+                                <h:message for="fname"/>
+                            </h:inputText>
+                        </div>
+                
+                     <h:outputLabel for="lname" value="Last Name"/>
+                        <div class="form-group">
+                            <h:inputText id="lname" value="#{adminManagedBean.lastName}" class="form-control"></h:inputText>
+                        </div>
+                     
+                      <h:outputLabel for="contactno" value="Contact Number"/>
+                        <div class="form-group">
+                            <h:inputText id="contactno" value="#{adminManagedBean.contactNo}" class="form-control"></h:inputText>
+                        </div>
+                      
+                      <h:outputLabel for="email" value="Email Id"/>
+                        <div class="form-group">
+                            <h:inputText id="email" value="#{adminManagedBean.emailId}" class="form-control"></h:inputText>
+                        </div>
+                      
+                      <h:outputLabel for="gender" value="Gender"/>
+                        <div class="form-group">
+                            <h:selectOneRadio id="gender" value="#{adminManagedBean.gender}" class="form-control">
+                                <f:selectItem itemLabel="Male" itemValue="Male"/>
+                                <f:selectItem itemLabel="Female" itemValue="Female"/>
+                            </h:selectOneRadio>
+                        </div>
+                      
+                     
+                      
+                      <h:outputLabel for="address" value="Address"/>
+                        <div class="form-group">
+                            <h:inputTextarea id="address" class="form-control" value="#{adminManagedBean.address}"></h:inputTextarea>
+                        </div>
+                      
+                      <h:outputLabel for="stateid" value="State"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="stateid" value="#{adminManagedBean.stateId}" class="form-control">
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItems value="#{adminManagedBean.getallState()}"  var="state" itemLabel="#{state.stateName} " itemValue="#{state.stateId}"/>
+                            </h:selectOneMenu>
+                        </div>
+                      
+                     <h:outputLabel for="citycombo" value="City"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="citycombo" value="#{adminManagedBean.cityId}" class="form-control">
+                                <f:selectItems value="#{adminManagedBean.getallCity()}" var="city" itemLabel="#{city.cityName} " itemValue="#{city.cityId}"/>
+                             </h:selectOneMenu>
+                        </div>
+                      
+                       <h:outputLabel for="pincode" value="Pincode"/>
+                        <div class="form-group">
+                            <h:inputText id="pincode" value="#{adminManagedBean.pincode}" class="form-control"></h:inputText>
+                        </div>
+                         
+                       <h:outputLabel for="username" value="Username"/>
+                        <div class="form-group">
+                            <h:inputText id="username" value="#{adminManagedBean.userName}" class="form-control" readonly="true"></h:inputText>
+                        </div>
+                   
+                       <h:inputHidden value="#{adminManagedBean.userName}"/>
+                       <h:commandButton id="btnsub" value="Submit" action="#{adminManagedBean.updateAdmin()}" class="btn btn-sm btn-success pull-right m-t-n-xs"></h:commandButton>
+               </h:form>
+                          </div>
+                      </section>
+                      
+
+                  </div>
+              </div>
+              </section>
+                     </section>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

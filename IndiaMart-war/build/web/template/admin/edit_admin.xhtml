@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+                <section id="main-content">
+                    
+          <section class="wrapper">
+                
+              <div class="row">
+                  <div class="col-lg-8">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              <b>PRODUCT CATEGORY</b>
+                          </header>
+                          <div class="panel-body">
+                              <h:form id="f1" prependId="false">                 
+                    <h:outputLabel  value="First Name"/>
+                        <div class="form-group">
+                            <p:inputText id="firstname" value="#{adminManagedBean.firstName}" styleClass="form-control" required="true">
+                            </p:inputText>
+                            <p:message for="firstname"/>
+                        </div>
+                
+                     <h:outputLabel for="lastname" value="Last Name"/>
+                        <div class="form-group">
+                            <p:inputText id="lastname" value="#{adminManagedBean.lastName}" styleClass="form-control" required="true"></p:inputText>
+                            <p:message for="lastname"/>
+                        </div>
+                     
+                      <h:outputLabel for="contactno" value="Contact Number"/>
+                        <div class="form-group">
+                            <p:inputText id="contactno" value="#{adminManagedBean.contactNo}" styleClass="form-control" required="true"></p:inputText>
+                            <p:message for="contactno"/>
+                        </div>
+                      
+                      <h:outputLabel for="email" value="Email Id"/>
+                        <div class="form-group">
+                            <p:inputText id="email" value="#{adminManagedBean.emailId}" styleClass="form-control" required="true"></p:inputText>
+                            <p:message for="email"/>
+                        </div>
+                      
+                      <h:outputLabel for="gender" value="Gender"/>
+                        <div class="form-group">
+                            <h:selectOneRadio value="#{adminManagedBean.gender}" class="form-control">
+                                <f:selectItem itemLabel="Male" itemValue="Male"/>
+                                <f:selectItem itemLabel="Female" itemValue="Female"/>
+                            </h:selectOneRadio>
+                        </div>
+                      
+                     
+                      
+                      <h:outputLabel for="address" value="Address"/>
+                        <div class="form-group">
+                            <p:inputTextarea id="address" styleClass="form-control" required="true" value="#{adminManagedBean.address}"></p:inputTextarea>
+                            <p:message for="address"/>
+                        </div>
+                      
+                      <h:outputLabel for="state" value="State"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="state" value="#{adminManagedBean.stateId}" class="form-control" required="true">
+                                <f:selectItem itemLabel="Select" itemValue="" />
+                                <f:selectItems value="#{adminManagedBean.getallState()}" var="state" itemLabel="#{state.stateName} " itemValue="#{state.stateId}"/>
+                              </h:selectOneMenu>
+                            <p:message for="state"/>
+                        </div>
+                      
+                     <h:outputLabel for="city" value="City"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="city" value="#{adminManagedBean.cityId}" class="form-control" required="true">
+                                <f:selectItems value="#{adminManagedBean.getallCity()}" var="city" itemLabel="#{city.cityName} " itemValue="#{city.cityId}"/>
+                             </h:selectOneMenu>
+                            <p:message for="city"/>
+                        </div>
+                      
+                       <h:outputLabel for="pincode" value="Pincode"/>
+                        <div class="form-group">
+                            <p:inputText id="pincode" value="#{adminManagedBean.pincode}" styleClass="form-control" required="true">
+                               </p:inputText>
+                            <p:message for="pincode"/>
+                            
+                        </div>
+                         
+                       <h:outputLabel for="username" value="Username"/>
+                        <div class="form-group">
+                            <p:inputText id="username" value="#{adminManagedBean.userName}" styleClass="form-control" required="true"></p:inputText>
+                            <p:message for="username"/>
+                        </div>
+                            
+                      <h:outputLabel for="password" value="Password"/>
+                        <div class="form-group">
+                            <h:inputSecret id="password" value="#{adminManagedBean.password}" class="form-control"></h:inputSecret>
+                            <p:message for="password"/>
+                        </div>
+               
+                     <h:inputHidden value="#{adminManagedBean.userName}"/>
+                       <h:commandButton id="btnsub" value="Submit" action="#{adminManagedBean.updateAdmin()}" class="btn btn-sm btn-primary pull-right m-t-n-xs"></h:commandButton>
+               </h:form>
+
+                          </div>
+                      </section>
+                  </div>
+                 
+              </div>
+              </section>
+                 </section>
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

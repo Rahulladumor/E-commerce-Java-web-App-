@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+                  <section id="main-content">
+          <section class="wrapper">
+                
+                
+                <div class="row">
+                <div class="col-sm-12">
+              <section class="panel">
+              <header class="panel-heading">
+                  <h2>Customer Info</h2>       
+              </header>
+              <div class="panel-body">
+              <div class="adv-table">
+                 
+              			
+                           <h:form>
+                               <h:dataTable value="#{adminManagedBean.getSellerBankInfo(request.getParameter('uname'))}"  var="item" id="exmaple" class="table table-striped table-bordered table-hover">
+                                    
+                                   <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Username"/>
+                                            </f:facet>
+                                       <h:outputText value="#{item.userName.userName}"/>
+                                     </h:column>
+                                
+                                     <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="A/C Holder Name"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.ACHoldername}"/>
+                                     </h:column>
+                                
+                                    <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="A/C Number"/>
+                                            </f:facet>
+                                        <h:outputText value="#{item.acNo}"/>
+                                     </h:column>
+                                
+                                     <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="A/C Type"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.acType}"/>
+                                     </h:column>
+                                
+                                     <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="IFSC"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.ifsc}"/>
+                                     </h:column>
+                                
+                                     <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Bank Name"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.bankName}"/>
+                                     </h:column>
+                                     
+                                     <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Branch"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.branch}"/>
+                                     </h:column>
+                                     <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="City"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.cityId.cityName}"/>
+                                     </h:column>
+                                     <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="State"/>
+                                            </f:facet>
+                                         <h:outputText value="#{item.stateId.stateName}"/>
+                                     </h:column>
+                                </h:dataTable>
+                   </h:form>
+                    <h:form>
+                       <center><p> <a href="view_seller.jsf"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;BACK</a> </p></center>
+                    </h:form>  
+            
+             <script>
+                $(function(){
+                $("#example").dataTable();
+                 });
+            </script>   
+
+
+              </div>
+              </div>
+              </section>
+              </div>
+              </div>
+              
+
+              </section>
+                    </section>
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./sellerTemplate.xhtml">
+
+            <ui:define name="content">
+                <section id="main-content">
+          <section class="wrapper">
+                
+               <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                             GST INFO
+                          </header>
+                          <div class="panel-body">
+                              <h:form id="f1" prependId="false">        
+                    <h:inputHidden value="#{sellerManagedBean.gstid}"/>
+                    <h:outputLabel  value="GSTIN Number"/>
+                        <div class="form-group">
+                            <h:inputText id="gst" value="#{sellerManagedBean.gst}" class="form-control" validatorMessage="chushu">
+                                <f:validateRequired/>
+                                <h:message for="acholder"/>
+                            </h:inputText>
+                        </div>
+                
+                      <h:outputLabel for="pan" value="PAN No"/>
+                        <div class="form-group">
+                            <h:inputTextarea id="pan" class="form-control" value="#{sellerManagedBean.pan}"></h:inputTextarea>
+                        </div>
+                     
+                      <h:inputHidden value="#{sellerManagedBean.gstt}"/>
+                      <h:inputHidden value="#{sellerManagedBean.uname}"/>
+                       <h:commandButton id="btnsub" value="Submit" action="#{sellerManagedBean.updateSellerGSTInfo()}" class="btn btn-sm btn-success pull-right m-t-n-xs"></h:commandButton>
+               </h:form>
+                          </div>
+                      </section>
+                      
+
+                  </div>
+              </div>
+              </section>
+                     </section>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

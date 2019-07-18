@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./adminTemplate.xhtml">
+
+            <ui:define name="content">
+              
+                <section id="main-content">
+                    
+          <section class="wrapper">
+                
+              <div class="row">
+                  <div class="col-lg-8">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              <b>PRODUCT CATEGORY</b>
+                          </header>
+                          <div class="panel-body">
+                              <h:form prependId="false">      
+                    <h:outputLabel for="categoryname" value="Category Name"/>
+                    <h:inputHidden id="catid" value="#{adminManagedBean.category_id}" class="form-control"></h:inputHidden>
+                    
+                        <div class="form-group">
+                            <p:inputText id="categoryname" value="#{adminManagedBean.catname}" styleClass="form-control" required="true"></p:inputText>
+                        </div>
+                    <p:message for="categoryname"/>
+                    <h:commandButton id="btnsub" value="Submit" action="#{adminManagedBean.updateCategory()}" class="btn btn-sm btn-primary pull-right m-t-n-xs"></h:commandButton>
+                </h:form>
+
+                          </div>
+                      </section>
+                  </div>
+                 
+              </div>
+              </section>
+                 </section>
+                
+                
+                
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

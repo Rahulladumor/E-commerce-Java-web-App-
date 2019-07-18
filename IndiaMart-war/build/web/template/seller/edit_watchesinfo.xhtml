@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./sellerTemplate.xhtml">
+
+            <ui:define name="content">
+                 <section id="main-content">
+          <section class="wrapper">
+                
+               <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                             Product Watch Information
+                          </header>
+                          <div class="panel-body">
+                             <h:form id="f1" prependId="false">          
+                       
+                     <h:outputLabel  for="mname" value="Model Name"/>
+                        <div class="form-group">
+                            <h:inputText id="pname" value="#{sellerManagedBean.watch_modelname}" class="form-control" validatorMessage="chushu">
+                                <f:validateRequired/>
+                                <h:message for="mname"/>
+                            </h:inputText>
+                        </div>
+                
+                    <h:outputLabel for="brand" value="Brand"/>
+                        <div class="form-group">
+                            <h:inputText id="brand" value="#{sellerManagedBean.watch_brand}" class="form-control"></h:inputText>
+                        </div>
+                      
+                     <h:outputLabel for="display" value="Display"/>
+                     <h:inputText id="display" value="#{sellerManagedBean.watch_disp}" class="form-control"></h:inputText>
+                    
+                     <h:outputLabel for="dialShape" value="Dial Shape"/>
+                        <div class="form-group">
+                            <h:inputText id="dialShape" value="#{sellerManagedBean.watch_dial}" class="form-control"></h:inputText>
+                        </div>
+                     
+                      <h:outputLabel for="smaterial" value="Starp Material"/>
+                        <div class="form-group">
+                            <h:inputText id="smaterial" value="#{sellerManagedBean.starp_material}" class="form-control"></h:inputText>
+                        </div>
+                      
+                      <h:outputLabel for="color" value="Color"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="color" value="#{sellerManagedBean.watch_colorid}" class="form-control">
+                              <f:selectItem itemLabel="Select Color" itemValue="" />
+                              <f:selectItems value="#{sellerManagedBean.getallColor()}" var="color" itemLabel="#{color.color} " itemValue="#{color.colorId}"/>
+                           </h:selectOneMenu>
+                        </div>
+                     
+                      
+                      <h:outputLabel for="scolor" value="Starp Color"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="scolor" value="#{sellerManagedBean.starp_colorid}" class="form-control">
+                              <f:selectItem itemLabel="Select Starp Color" itemValue="" />
+                              <f:selectItems value="#{sellerManagedBean.getallColor()}" var="color" itemLabel="#{color.color} " itemValue="#{color.colorId}"/>
+                           </h:selectOneMenu>
+                        </div>
+                     
+                     <h:outputLabel for="ccolor" value="Case Color"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="ccolor" value="#{sellerManagedBean.case_colorid}" class="form-control">
+                              <f:selectItem itemLabel="Select Case Color" itemValue="" />
+                              <f:selectItems value="#{sellerManagedBean.getallColor()}" var="color" itemLabel="#{color.color} " itemValue="#{color.colorId}"/>
+                           </h:selectOneMenu>
+                        </div>
+                     
+                     <h:outputLabel for="dcolor" value="Dial Color"/>
+                        <div class="form-group">
+                            <h:selectOneMenu id="dcolor" value="#{sellerManagedBean.dial_colorid}" class="form-control">
+                              <f:selectItem itemLabel="Select Dial Color" itemValue="" />
+                              <f:selectItems value="#{sellerManagedBean.getallColor()}" var="color" itemLabel="#{color.color} " itemValue="#{color.colorId}"/>
+                           </h:selectOneMenu>
+                        </div>
+                     
+                     <h:inputHidden value="#{sellerManagedBean.prowatch_id}"/>
+                     <h:inputHidden value="#{sellerManagedBean.watch_proid}"/>
+                     <h:commandButton id="btnsub" value="Submit" action="#{sellerManagedBean.update_ProductWatchesinfo()}" class="btn btn-sm btn-primary pull-right m-t-n-xs"></h:commandButton>
+                   </h:form>
+                            <h:form>
+                       <center><p> <a href="view_admin.jsf"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;BACK</a> </p></center>
+                       </h:form>
+                          </div>
+                      </section>
+                      
+
+                  </div>
+              </div>
+              </section>
+                     </section>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
